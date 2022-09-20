@@ -1,6 +1,12 @@
 import {ChakraProvider, extendTheme} from "@chakra-ui/react"
+// We could have wraped this playerlayout component in index file around different pages individually
+// But that would reload this layout upon navigation
+// And since the playerlayout has a music playing state, the song will start over and over again
+// If you do not have a state, you can easily wrap it around index file pages, visually this will not create much difference
+import PlayerLayout from "../components/playerLayout"
 // reset css for every single browser
 import 'reset-css'
+
 
 // ChakraUI has a weird bluish-grey
 // customizing that to a decent color
@@ -37,7 +43,9 @@ const theme = extendTheme({
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <PlayerLayout>
+        <Component {...pageProps} />
+      </PlayerLayout>
     </ChakraProvider>
   )
 }
