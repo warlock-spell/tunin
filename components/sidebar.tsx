@@ -1,6 +1,9 @@
 // Importing image components that are optimized by nextjs
 import NextImage from 'next/image'
-
+// if someone clicks on a regular anchor tag, it's gonna go to the server, make a request 
+// and therfore it will not perform client side rendering
+// we want client side rendering after the initial server render
+import NextLink from 'next/link'
 // Importing list elements, as side bar has mainly items displayed in list format
 // Divider is to divide various section in sidebar, inspiration from spotify itself
 // LinkBox and LinkOverlay gives us a click target (large click area around a small word)
@@ -25,6 +28,28 @@ import {
     MdFavorite
 } from 'react-icons/md'
 
+
+// creating menu so that we can map over one component
+// Its important to make your code reusable as much as possible
+// this technique is easier to debug, test and extend functionalities
+const navMenu = [
+    {
+        name: 'Home',
+        icon: MdHome,
+        route: '/'
+    },
+    {
+        name: 'Search',
+        icon: MdSearch,
+        route: '/search'
+    },
+    {
+        name: 'Your Library',
+        icon: MdLibraryMusic,
+        route: '/library'
+    }
+]
+
 const Sidebar = () => {
     return (
         // since sidebar is already in a layout which has a specified width,
@@ -36,6 +61,24 @@ const Sidebar = () => {
                 <Box width='250px' marginBottom='20px' paddingX='50px'>
                     {/* values are required inside curly braces for image to be optimized */}
                     <NextImage src='/LogoTransparent.svg' height={160} width={120}/>
+                </Box>
+                <Box marginBottom='20px'>
+                    <List spacing={2}>
+                        {navMenu.map(menu => (
+                            // implicit return
+                            <ListItem paddingX='20px' fontSize='16px' key={menu.name}>
+                                <LinkBox>
+                                    <NextLink href={menu.route} passHref>
+                                        <LinkOverlay>
+                                            <ListIcon as={menu.icon} color='white' marginRight='20px' />
+                                            {/* display name of menu in navBar*/}
+                                            {menu.name}
+                                        </LinkOverlay>
+                                    </NextLink>
+                                </LinkBox>
+                            </ListItem>
+                        ))}
+                    </List>
                 </Box>
             </Box>
         </Box>
