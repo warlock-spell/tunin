@@ -93,6 +93,7 @@ const Sidebar = () => {
                         ))}
                     </List>
                 </Box>
+                <Divider />
                 <Box>
                     <List spacing={2}>
                         {/* iterate over the music menu  */}
