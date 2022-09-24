@@ -93,7 +93,7 @@ const Sidebar = () => {
                         ))}
                     </List>
                 </Box>
-                <Box marginTop='20px'>
+                <Box marginTop='20px' >
                     <List spacing={2}>
                         {/* iterate over the music menu  */}
                         {musicMenu.map(menu => (
@@ -111,7 +111,7 @@ const Sidebar = () => {
                         ))}
                     </List>
                 </Box>
-                <Box marginTop='20px'>
+                <Box marginTop='20px' marginBottom='10px'>
                     <List>
                         <ListItem fontSize='10px' textAlign='center'>
                             Made by Daksh Gaur
@@ -119,7 +119,11 @@ const Sidebar = () => {
                     </List>
                 </Box>
                 <Divider color='gray.800' />
-                
+                {/* only this section can scroll in nav bar, therefore it needs height to decide when it is overflowing  */}
+                <Box height='50%' overflowY='auto' paddingY='20px'>
+                    {/* demo iteration to see how things scroll  */}
+                    {new Array(50).fill(1).map(() => <h1>Testing</h1>)}
+                </Box>
             </Box>
         </Box>
     )
