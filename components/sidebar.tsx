@@ -94,7 +94,7 @@ const Sidebar = () => {
                     </List>
                 </Box>
                 <Divider />
-                <Box>
+                <Box marginTop='20px'>
                     <List spacing={2}>
                         {/* iterate over the music menu  */}
                         {musicMenu.map(menu => (
