@@ -50,6 +50,19 @@ const navMenu = [
     }
 ]
 
+const musicMenu = [
+    {
+        name: 'Create Playlist',
+        icon: MdPlaylistAdd,
+        route: '/',
+    },
+    {
+        name: 'Favorites',
+        icon: MdFavorite,
+        route: '/favorites',
+    }
+]
+
 const Sidebar = () => {
     return (
         // since sidebar is already in a layout which has a specified width,
@@ -72,6 +85,24 @@ const Sidebar = () => {
                                         <LinkOverlay>
                                             <ListIcon as={menu.icon} color='white' marginRight='20px' />
                                             {/* display name of menu in navBar*/}
+                                            {menu.name}
+                                        </LinkOverlay>
+                                    </NextLink>
+                                </LinkBox>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Box>
+                <Box>
+                    <List spacing={2}>
+                        {/* iterate over the music menu  */}
+                        {musicMenu.map(menu => (
+                            <ListItem paddingX='20px' fontSize='16px' key={menu.name}>
+                                <LinkBox>
+                                    <NextLink href={menu.route} passHref>
+                                        <LinkOverlay>
+                                            <ListIcon as={menu.icon} color='white' marginRight='20px' />
+                                            {/* display name of menu in musicMenu*/}
                                             {menu.name}
                                         </LinkOverlay>
                                     </NextLink>
