@@ -113,8 +113,8 @@ const Sidebar = () => {
                 </Box>
                 <Box marginTop='20px' marginBottom='10px'>
                     <List>
-                        <ListItem fontSize='10px' textAlign='center'>
-                            Made by Daksh Gaur
+                        <ListItem fontSize='12px' textAlign='center'>
+                            Made with &hearts; by Daksh
                         </ListItem>
                     </List>
                 </Box>
