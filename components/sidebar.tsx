@@ -93,7 +93,6 @@ const Sidebar = () => {
                         ))}
                     </List>
                 </Box>
-                <Divider color='gray.800' />
                 <Box marginTop='20px'>
                     <List spacing={2}>
                         {/* iterate over the music menu  */}
@@ -112,6 +111,15 @@ const Sidebar = () => {
                         ))}
                     </List>
                 </Box>
+                <Box marginTop='20px'>
+                    <List>
+                        <ListItem fontSize='10px' textAlign='center'>
+                            Made by Daksh Gaur
+                        </ListItem>
+                    </List>
+                </Box>
+                <Divider color='gray.800' />
+                
             </Box>
         </Box>
     )
