@@ -10,3 +10,13 @@ datasource db {
   url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABSE_URL")
 }
+
+// refer :-> https://www.prisma.io/docs/concepts/components/prisma-schema
+// Install VsCode Prisma Extension for a very clean and nice formatting
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+  password  String
+}
