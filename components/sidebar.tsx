@@ -63,6 +63,8 @@ const musicMenu = [
     }
 ]
 
+const playlists = new Array(30).fill(1).map((_, i) => `Playlist ${i + 1}`)
+
 const Sidebar = () => {
     return (
         // since sidebar is already in a layout which has a specified width,
@@ -122,7 +124,19 @@ const Sidebar = () => {
                 {/* only this section can scroll in nav bar, therefore it needs height to decide when it is overflowing  */}
                 <Box height='50%' overflowY='auto' paddingY='20px'>
                     {/* demo iteration to see how things scroll  */}
-                    {new Array(50).fill(1).map(() => <h1>Testing</h1>)}
+                    <List spacing={2}>
+                        {playlists.map((playlist) => (
+                            <ListItem paddingX='20px' key={playlist}>
+                                <LinkBox>
+                                    <NextLink href='/' passHref>
+                                        <LinkOverlay>
+                                            {playlist}
+                                        </LinkOverlay>
+                                    </NextLink>
+                                </LinkBox>
+                            </ListItem>
+                        ))}
+                    </List>
                 </Box>
             </Box>
         </Box>
