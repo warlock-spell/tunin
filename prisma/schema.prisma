@@ -54,3 +54,13 @@ model Playlist {
   user      User?    @relation(fields: [userId], references: [id])
   userId    Int?
 }
+
+// Migrations with Prisma:
+// Prisma has 'database push' which is the same as migration but it doesn't create a history
+// Its basically meant for prototyping the schema without fully committing to, kinda doing git commit without git push
+// Run in terminal 'npx prisma db push', once you run this you will get a confirmation that prisma is in sync with your database that you have deployed somewhere, it'll generate a prisma client
+// In layman terms, it means that Prisma confirms that it has notified the data base about schema changes
+// The generated client will be used for us to query the database, we have literally an SDK created just for our schema that know about all of our fields and the types of those fields, in nextjs you can use it on the frontend as well as backend
+// 'npx prisma migrate dev' is like git push, it will ask for migration name (just like message in git commit)
+// now you can check your sql code in migrations folder
+// as we go forward, we can make changes to the schema, and we can just keep running db.push and it'll tell us if we need to run a migration or not
