@@ -36,6 +36,7 @@ model Song {
   // Song and Playlist will have many to many relationship
   playlists Playlist[]
   duration  Int
+  url       String
 }
 
 model Artist {
