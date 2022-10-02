@@ -38,6 +38,31 @@ const run = async () => {
         },
 
     })
+
+    const songs = await prisma.song.findMany({})
+    // instead of Promise.all() you can actually do prisma.some.entity.createMany and create all the palylist at once versus doing Promise.all() and creating them one at a time
+    // but if you do that, it will create issues while using nested create
+    // so we are using Promise.all() so that we are creating one at a time and they all can do nested create
+
+    await Promise.all(new Array(10).fill(1).map(async (_, i) => {
+        // you can use upsert only if you can query something unique, so that you can have the 'where' argument
+        return prisma.playlist.create({
+            data: {
+                name: `Playlist #$(i+1)`, 
+                user: {
+                    // so that prisma connects user with userid, so avoid using userId: user.id
+                    // you can also use an awesome feature by prisma using connectOrCreate
+                    connect: {id: user.id},
+                },
+                songs: {
+                    connect: songs.map((song) => ({
+                        id : song.id,
+                    })),
+                },
+            },
+        })
+    }))
+    
 }
 
 run()
