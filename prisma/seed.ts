@@ -25,6 +25,19 @@ const run = async () => {
             }
         })
     }))
+
+    // password encryption
+    const salt = bcrypt.genSaltSync()
+    const user = await prisma.user.upsert({
+        where: {email: 'user@test.com'},
+        update: {},
+        create: {
+            email: 'user@test.com',
+            // password is 'password' 
+            password: bcrypt.hashSync('password', salt),
+        },
+
+    })
 }
 
 run()
@@ -43,3 +56,7 @@ run()
 
 
 // add prisma in package.json, then run 'npx prisma db seed' in terminal, if the seed command is executed properly then run 'npx prisma studio' to visualize your database with seed data
+
+// Does prisma code get shipped to the client? That all actually depends on where you write the code, because Next.js does optimization on imports. 
+// For this project we will not write any prisma code on client, although we will be writing prisma code in a component that is on the client, but the way Next.js behaves is that it actually strips all that out for the client build
+// So although it does look like that it's been written on the client, it actually will be stripped out before it gets built
