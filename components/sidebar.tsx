@@ -75,7 +75,7 @@ const Sidebar = () => {
             <Box paddingY='20px' height="100%">
                 <Box width='250px' marginBottom='20px' paddingX='50px'>
                     {/* values are required inside curly braces for image to be optimized */}
-                    <NextImage src='/LogoTransparent.svg' height={160} width={120}/>
+                    <NextImage src='/LogoTransparent.svg' height={160} width={160}/>
                 </Box>
                 <Box marginBottom='20px'>
                     <List spacing={2}>
