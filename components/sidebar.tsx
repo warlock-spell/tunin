@@ -27,6 +27,7 @@ import {
     MdPlaylistAdd,
     MdFavorite
 } from 'react-icons/md'
+import { usePlaylist } from '../lib/hooks'
 
 
 // creating menu so that we can map over one component
@@ -63,9 +64,12 @@ const musicMenu = [
     }
 ]
 
-const playlists = new Array(30).fill(1).map((_, i) => `Playlist ${i + 1}`)
+// const playlists = new Array(30).fill(1).map((_, i) => `Playlist ${i + 1}`)
 
 const Sidebar = () => {
+    
+    const {playlists} = usePlaylist()
+
     return (
         // since sidebar is already in a layout which has a specified width,
         // therefore stretching it 100% over the alloted layout
@@ -126,11 +130,11 @@ const Sidebar = () => {
                     {/* demo iteration to see how things scroll  */}
                     <List spacing={2}>
                         {playlists.map((playlist) => (
-                            <ListItem paddingX='20px' key={playlist}>
+                            <ListItem paddingX='20px' key={playlist.id}>
                                 <LinkBox>
                                     <NextLink href='/' passHref>
                                         <LinkOverlay>
-                                            {playlist}
+                                            {playlist.name}
                                         </LinkOverlay>
                                     </NextLink>
                                 </LinkBox>
