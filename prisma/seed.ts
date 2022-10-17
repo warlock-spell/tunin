@@ -48,7 +48,7 @@ const run = async () => {
         // you can use upsert only if you can query something unique, so that you can have the 'where' argument
         return prisma.playlist.create({
             data: {
-                name: `Playlist #$(i+1)`, 
+                name: `Playlist #${i+1}`, 
                 user: {
                     // so that prisma connects user with userid, so avoid using userId: user.id
                     // you can also use an awesome feature by prisma using connectOrCreate
@@ -66,7 +66,7 @@ const run = async () => {
 }
 
 run()
-.catch(e => {
+.catch((e) => {
     // to make sure database doesn't keep running or log memory leaks if any
     console.error(e)
     process.exit(1)
