@@ -18,7 +18,9 @@ const PlayerLayout = ({children}) => {
             <Box marginLeft='250px' marginBottom='100px'>
                 {/* left margin so that it aligns right next to side bar */}
                 {/* bottom margin so that it aligns right above the player bar */}
-                {children}
+                <Box height='calc(100vh - 100px)'>
+                    {children}
+                </Box>
             </Box>
             <Box position= 'absolute' left='0' bottom='0'>
                 player
