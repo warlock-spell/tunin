@@ -21,7 +21,7 @@ const run = async () => {
                         duration: song.duration,
                         url: song.url,
                     }))
-                }
+                },
             }
         })
     }))
@@ -35,6 +35,8 @@ const run = async () => {
             email: 'user@test.com',
             // password is 'password' 
             password: bcrypt.hashSync('password', salt),
+            firstName: 'Daksh',
+            lastName: 'Gaur',
         },
 
     })
