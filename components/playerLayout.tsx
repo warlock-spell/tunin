@@ -2,6 +2,7 @@
 // div can be styled with inline style tag or a css file, while using box we can style it using Chakra's primitive
 
 import {Box} from '@chakra-ui/layout'
+import PlayerBar from './playerBar'
 import Sidebar from './sidebar'
 
 const PlayerLayout = ({children}) => {
@@ -23,7 +24,7 @@ const PlayerLayout = ({children}) => {
                 </Box>
             </Box>
             <Box position= 'absolute' left='0' bottom='0'>
-                player
+                <PlayerBar />
             </Box>
 
         </Box>
