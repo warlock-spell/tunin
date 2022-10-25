@@ -4,6 +4,21 @@ import GradientLayout from '../components/gradientLayout'
 import { useMe } from '../lib/hooks'
 import prisma from '../lib/prisma'
 
+const getBGImage = id => {
+    const img = [
+        '/avatar1.jpg',
+        '/avatar2.jpg',
+        '/avatar3.jpg',
+        '/avatar4.jpg',
+        '/avatar5.jpg',
+        
+
+    ]
+
+    return img[id - 1] || img[Math.floor(Math.random() * img.length)]
+}
+
+
 const Home = ({ artists }) => {
   const { user } = useMe()
 
@@ -27,10 +42,12 @@ const Home = ({ artists }) => {
         </Box>
         <Flex>
           {artists.map((artist) => (
+            
             <Box paddingX="10px" width="20%">
               <Box bg="gray.900" borderRadius="4px" padding="15px" width="100%">
+                
                 <Image
-                  src="/avatar2.jpg"
+                  src={getBGImage(artist.id)}
                   borderRadius="100%"
                 />
                 <Box marginTop="20px">
