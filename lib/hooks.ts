@@ -14,8 +14,8 @@ export const useMe = () => {
 
 export const usePlaylist = () => {
   const { data, error } = useSWR("/playlist", fetcher);
-  console.log('data inside usePlaylist', data);
-  console.log('error inside usePlaylist', error);
+  // console.log('data inside usePlaylist', data);
+  // console.log('error inside usePlaylist', error);
   return {
     playlists: (data as any) || [],
     isLoading: !data && !error,
