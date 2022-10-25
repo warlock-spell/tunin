@@ -10,6 +10,6 @@ export default validateRoute(async (req, res, user) => {
             name: 'asc'
         }
     })
-
+    // console.log(playlists)
     res.json(playlists)
 })

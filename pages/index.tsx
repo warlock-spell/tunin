@@ -30,7 +30,7 @@ const Home = ({ artists }) => {
             <Box paddingX="10px" width="20%">
               <Box bg="gray.900" borderRadius="4px" padding="15px" width="100%">
                 <Image
-                  src="/panda.jpg"
+                  src="/avatar2.jpg"
                   borderRadius="100%"
                 />
                 <Box marginTop="20px">
@@ -54,7 +54,6 @@ Therefore dynamic pages generally uses getServerSideProps
 */ 
 export const getServerSideProps = async () => {
   const artists = await prisma.artist.findMany({})
-
 
 
   return {
