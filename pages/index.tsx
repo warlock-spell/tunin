@@ -12,10 +12,10 @@ const Home = ({ artists }) => {
       roundImage
       color="gray"
       subTitle="profile"
-      // title={`${user?.firstName} ${user?.lastName}`}
-      title = 'Daksh Gaur'
-      // description={`${user?.playlistsCount} public playlists`}
-      description='YOUR HOME PAGE'
+      title={`${user?.firstName} ${user?.lastName}`}
+      // title = 'Daksh Gaur'
+      description={`${user?.playlistsCount} public playlists`}
+      // description='YOUR HOME PAGE'
       image="/main.jpg"
     >
       <Box color="white" paddingX="40px">
