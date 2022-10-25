@@ -20,10 +20,33 @@ const getBGColor = id => {
     return colors[id - 1] || colors[Math.floor(Math.random() * colors.length)]
 }
 
+// const getBGImage = id => {
+//     const img = [
+//         '/avatar1.jpg',
+//         '/avatar2.jpg',
+//         '/avatar3.jpg',
+//         '/avatar4.jpg',
+//         '/avatar5.jpg',
+        
+
+//     ]
+
+//     return img[id - 1] || img[Math.floor(Math.random() * img.length)]
+// }
+
 const Playlist = ({playlist}) => {
     const color = getBGColor(playlist.id)
+    // const img = getBGImage(playlist.id)
     return (
-        <GradientLayout color={color}>
+        <GradientLayout 
+        color={color} 
+        roundImage={false} 
+        title={playlist.name} 
+        subTitle='playlist'
+        description={`${playlist.songs.length} songs`}
+        // image={img}
+        image = {`https://picsum.photos/400?random=${playlist.id}`}
+        >
             <div>Content here</div>
         </GradientLayout>
     )
