@@ -6,6 +6,8 @@ import {ChakraProvider, extendTheme} from "@chakra-ui/react"
 import PlayerLayout from "../components/playerLayout"
 // reset css for every single browser
 import 'reset-css'
+import { StoreProvider } from "easy-peasy"
+import { store } from '../lib/store'
 
 
 // ChakraUI has a weird bluish-grey
@@ -43,14 +45,15 @@ const theme = extendTheme({
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      {Component.authPage ? (
-        // If the component has an authPage property, do not wrap it in layout
-        <Component {...pageProps} />
-      ): <PlayerLayout>
+      <StoreProvider store={store}>
+        {Component.authPage ? (
+          // If the component has an authPage property, do not wrap it in layout
           <Component {...pageProps} />
-         </PlayerLayout>
-      }
-      
+        ): <PlayerLayout>
+            <Component {...pageProps} />
+          </PlayerLayout>
+        }
+      </StoreProvider>
     </ChakraProvider>
   )
 }
