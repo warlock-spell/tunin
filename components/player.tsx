@@ -36,6 +36,8 @@ const Player = ({songs, activeSong}) => {
     const [duration, setDuration] = useState(0.0)
     const [repeat, setRepeat] = useState(false)
     const [shuffle, setShuffle] = useState(false)
+    // reference to ReactHowler
+    const soundRef = useRef(null)
 
     const setPlayState = (value) => {
         setPlaying(value)
@@ -49,10 +51,35 @@ const Player = ({songs, activeSong}) => {
         setRepeat((state) => !state)
     }
 
+    const prevSong = () => {
+        setIndex((state) => {
+        // if index > 0 then subtract one else loop back to the end of the playlist
+        return state ? state - 1 : songs.length - 1
+        })
+    }
+
+    const nextSong = () => {
+        // Expecting to shuffle when clicked on next button if shuffle is ON
+        setIndex((state) => {
+        if (shuffle) {
+            const next = Math.floor(Math.random() * songs.length)
+
+            if (next === state) {
+            return nextSong()
+            }
+            return next
+        } else {
+            return state === songs.length - 1 ? 0 : state + 1
+        }
+
+        
+        })
+    }
+
     return (
     <Box>
         <Box>
-            <ReactHowler playing={playing} src={activeSong?.url} />
+            <ReactHowler playing={playing} src={activeSong?.url} ref={soundRef} />
         </Box>
         <Center color='gray.600'>
             <ButtonGroup>
